@@ -1028,6 +1028,16 @@
     const addr = 'vascoqueiros' + String.fromCharCode(64) + 'gmail.com';
     document.querySelectorAll('.em').forEach(e => { e.textContent = addr.replace('@',' at ').replace('.com',' dot com'); });
     document.querySelectorAll('.em-link').forEach(a => { a.href = 'mailto:' + addr; });
-  </script>
+  
+    // keep URL hash in sync with the active tab, and honor deep-links like /#art
+    const tabIds = { 'r-writing': 'writing', 'r-art': 'art', 'r-more': 'more' };
+    for (const [rid, hash] of Object.entries(tabIds)) {
+      const r = document.getElementById(rid);
+      if (r) r.addEventListener('change', () => { if (r.checked) history.replaceState(null, '', '#' + hash); });
+    }
+    const h = location.hash.slice(1);
+    const entry = Object.entries(tabIds).find(([, v]) => v === h);
+    if (entry) { const r = document.getElementById(entry[0]); if (r) r.checked = true; }
+</script>
 </body>
 </html>
