@@ -33,6 +33,14 @@
     font-size: 0.7rem;
     color: #94897A;
   }
+  .offer {
+    margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #94897A;
+  }
+  .offer a { color: #94897A; }
+  .offer a:hover { color: #C41200; }
 </style>
 <style>
   :root {
@@ -469,6 +477,7 @@
       <li class="post"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/manuel-de-favaios-e-outros-rascunhos/" target="_blank" rel="noopener">Manuel de Favaios e outros Rascunhos</a></li>
     </ul>
     <p class="count">168 pieces · 2011–2026</p>
+    <p class="offer"><a class="em-link" href="#">Consulting — I help smart people articulate their best ideas</a></p>
   </section>
 
   <section id="art">
@@ -786,6 +795,7 @@
       </article>
     </div>
     <p class="count">43 pieces · 2025–2026</p>
+    <p class="offer"><a class="em-link" href="#">Commissions — you explain the idea, I find the shape</a></p>
   </section>
 
 
@@ -902,5 +912,10 @@
   if (lw) lw.addEventListener('click', function(){ history.replaceState(null, '', '#writing'); });
 })();
 </script>
+  <script>
+    const addr = 'vascoqueiros' + String.fromCharCode(64) + 'gmail.com';
+    document.querySelectorAll('.em').forEach(e => { e.textContent = addr.replace('@',' at ').replace('.com',' dot com'); });
+    document.querySelectorAll('.em-link').forEach(a => { a.href = 'mailto:' + addr; });
+  </script>
 </body>
 </html>
