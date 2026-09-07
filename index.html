@@ -875,5 +875,19 @@
       if (items.length > 1 && e.key === 'ArrowLeft') show(idx - 1);
     });
   </script>
+<script>
+(function(){
+  function route(){
+    var el = document.getElementById(location.hash === '#art' ? 'r-art' : 'r-writing');
+    if (el) el.checked = true;
+  }
+  window.addEventListener('hashchange', route);
+  if (location.hash) route();
+  var la = document.querySelector('label[for="r-art"]');
+  var lw = document.querySelector('label[for="r-writing"]');
+  if (la) la.addEventListener('click', function(){ history.replaceState(null, '', '#art'); });
+  if (lw) lw.addEventListener('click', function(){ history.replaceState(null, '', '#writing'); });
+})();
+</script>
 </body>
 </html>
