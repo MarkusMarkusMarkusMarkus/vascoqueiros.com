@@ -41,6 +41,48 @@
   }
   .offer a { color: #94897A; }
   .offer a:hover { color: #C41200; }
+  #more { display: none; }
+  .row3 {
+    margin-top: 2.6rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .row3 dt, .contact dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: #94897A;
+  }
+  .row3 dd, .contact dd { font-size: 1.06rem; margin-top: 0.2rem; }
+  .row3 dd a, .contact dd a { color: #211D17; text-decoration: none; }
+  .row3 dd a:hover, .contact dd a:hover { color: #C41200; }
+  .contact { margin-top: 2.4rem; }
+  @media (max-width: 600px) { .row3 { grid-template-columns: 1fr; } }
+  .split {
+    margin-top: 2.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .colhead {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #E5DFD3;
+    margin-bottom: 1.2rem;
+  }
+  .split dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: #94897A;
+    margin-top: 1.7rem;
+  }
+  .split dl dt:first-child { margin-top: 0; }
+  .split dd { font-size: 1.06rem; margin-top: 0.2rem; }
+  .split dd a { color: #211D17; text-decoration: none; }
+  .split dd a:hover { color: #C41200; }
+  @media (max-width: 540px) { .split { grid-template-columns: 1fr; } }
 </style>
 <style>
   :root {
@@ -85,19 +127,22 @@
     -webkit-tap-highlight-color: transparent;
   }
   #r-writing:checked ~ header nav label[for="r-writing"],
-  #r-art:checked ~ header nav label[for="r-art"] {
+  #r-art:checked ~ header nav label[for="r-art"],
+  #r-more:checked ~ header nav label[for="r-more"] {
     color: var(--ink);
     border-bottom: 2px solid var(--red);
   }
   #r-writing:focus-visible ~ header nav label[for="r-writing"],
-  #r-art:focus-visible ~ header nav label[for="r-art"] {
+  #r-art:focus-visible ~ header nav label[for="r-more"],
+  #r-more:focus-visible ~ header nav label[for="r-more"] {
     outline: 2px solid var(--red); outline-offset: 3px;
   }
   nav .sep { color: var(--rule); margin: 0 0.75rem; }
   /* panels are switched by the radios above — no JavaScript involved */
   #writing, #art { display: none; }
   #r-writing:checked ~ #writing,
-  #r-art:checked ~ #art { display: block; }
+  #r-art:checked ~ #art,
+  #r-more:checked ~ #more { display: block; }
   ul { list-style: none; margin-top: 2.2rem; }
   li.year {
     font-family: 'JetBrains Mono', monospace;
@@ -278,17 +323,62 @@
   .lb-meta a { color: var(--faded); }
   .lb-meta a:hover { color: var(--red); }
   [hidden] { display: none; }
+  #more { display: none; }
+  .row3 {
+    margin-top: 2.6rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .row3 dt, .contact dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: #94897A;
+  }
+  .row3 dd, .contact dd { font-size: 1.06rem; margin-top: 0.2rem; }
+  .row3 dd a, .contact dd a { color: #211D17; text-decoration: none; }
+  .row3 dd a:hover, .contact dd a:hover { color: #C41200; }
+  .contact { margin-top: 2.4rem; }
+  @media (max-width: 600px) { .row3 { grid-template-columns: 1fr; } }
+  .split {
+    margin-top: 2.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .colhead {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #E5DFD3;
+    margin-bottom: 1.2rem;
+  }
+  .split dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: #94897A;
+    margin-top: 1.7rem;
+  }
+  .split dl dt:first-child { margin-top: 0; }
+  .split dd { font-size: 1.06rem; margin-top: 0.2rem; }
+  .split dd a { color: #211D17; text-decoration: none; }
+  .split dd a:hover { color: #C41200; }
+  @media (max-width: 540px) { .split { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
   <input class="tabin" type="radio" name="tab" id="r-writing" checked>
   <input class="tabin" type="radio" name="tab" id="r-art">
+<input class="tabin" type="radio" name="tab" id="r-more">
   <header>
     <h1>vasco queiros</h1>
     <nav>
       <label for="r-writing">Writing</label>
       <span class="sep">|</span>
       <label for="r-art">Art</label>
+      <span class="sep">|</span>
+      <label for="r-more">more</label>
     </nav>
   </header>
 
@@ -797,6 +887,28 @@
     <p class="count">43 pieces · 2025–2026</p>
     <p class="offer"><a class="em-link" href="#">Commissions — you explain the idea, I find the shape</a></p>
   </section>
+
+  <section id="more">
+    <div class="row3">
+      <dl>
+        <dt>Working with me</dt>
+        <dd><a href="https://rivalvoices.substack.com/p/my-work-with-chris-lakin" target="_blank" rel="noopener">What it's like</a></dd>
+      </dl>
+      <dl>
+        <dt>Grants</dt>
+        <dd><a href="https://www.mercatus.org/emergent-ventures" target="_blank" rel="noopener">Emergent Ventures</a>, <a href="https://kanro.fi/" target="_blank" rel="noopener">Kanro</a></dd>
+      </dl>
+      <dl>
+        <dt>Residencies</dt>
+        <dd><a href="https://rivalvoices.substack.com/p/30-days-of-writing-my-inkhaven-experience" target="_blank" rel="noopener">Inkhaven</a>, <a href="https://www.inscribe-residency.com/" target="_blank" rel="noopener">Inscribe (Mentor)</a></dd>
+      </dl>
+    </div>
+    <dl class="contact">
+      <dt>Contact</dt>
+      <dd><a class="em-link" href="#" id="em-more">email</a></dd>
+    </dl>
+  </section>
+
 
 
 
