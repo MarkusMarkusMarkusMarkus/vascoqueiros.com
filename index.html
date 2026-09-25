@@ -287,6 +287,27 @@
   .lb-meta a { color: var(--faded); }
   .lb-meta a:hover { color: var(--red); }
   [hidden] { display: none; }
+
+  /* Writing filter menu */
+  .nw { position: relative; display: inline-block; }
+  .sub {
+    display: none;
+    position: absolute; top: 100%; left: -0.7rem; z-index: 5;
+    padding: 0.35rem 0;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  .nw:hover .sub, .nw:focus-within .sub, .nw.open .sub { display: block; }
+  .sub button {
+    display: block; width: 100%; text-align: left;
+    font: inherit; color: var(--faded);
+    background: none; border: 0; cursor: pointer;
+    padding: 0.3rem 0.7rem;
+  }
+  .sub button:hover { color: var(--red); }
+  .sub button.on { color: var(--ink); }
+  li.year.hide, li.post.hide { display: none; }
 </style>
 </head>
 <body>
@@ -296,7 +317,7 @@
   <header>
     <h1>vasco queiros</h1>
     <nav>
-      <label for="r-writing">Writing</label>
+      <span class="nw"><label for="r-writing">Writing</label><span class="sub" role="menu"><button data-f="all" class="on">All</button><button data-f="essay">Essays</button><button data-f="book">Books</button><button data-f="en">English</button><button data-f="pt">Portuguese</button></span></span>
       <span class="sep">|</span>
       <label for="r-art">Art</label>
       <span class="sep">|</span>
@@ -307,188 +328,193 @@
   <section id="writing">
     <ul>
       <li class="year">2026</li>
-      <li class="post"><span class="date">Aug 12</span><a href="https://rivalvoices.substack.com/p/therapy-1" target="_blank" rel="noopener">Therapy #1</a></li>
-      <li class="post"><span class="date">Jun 30</span><a href="https://rivalvoices.substack.com/p/god-help-me-am-i-about-to-change" target="_blank" rel="noopener">God help me am I about to change my view on AI-assisted writing?</a></li>
-      <li class="post"><span class="date">Jun 17</span><a href="https://rivalvoices.substack.com/p/normies-mistrust-weirdos-and-theyre" target="_blank" rel="noopener">Normies mistrust weirdos -- and they’re right to do so</a></li>
-      <li class="post"><span class="date">May 22</span><a href="https://rivalvoices.substack.com/p/how-to-experience-the-true-nature" target="_blank" rel="noopener">The Direct Pointers That Have Worked Best for Me So Far</a></li>
-      <li class="post"><span class="date">May 21</span><a href="https://rivalvoices.substack.com/p/we-need-to-talk-about-wwe-unreal" target="_blank" rel="noopener">We need to talk about WWE Unreal</a></li>
-      <li class="post"><span class="date">May 18</span><a href="https://rivalvoices.substack.com/p/put-your-own-oxygen-mask-on-first" target="_blank" rel="noopener">Put your own oxygen mask on first before trying to help others</a></li>
-      <li class="post"><span class="date">May 12</span><a href="https://rivalvoices.substack.com/p/lemmings" target="_blank" rel="noopener">Lemmings</a></li>
-      <li class="post"><span class="date">May 11</span><a href="https://rivalvoices.substack.com/p/the-pig-or-wig-theory-of-populism" target="_blank" rel="noopener">The Pig-or-Wig Theory of Populism</a></li>
-      <li class="post"><span class="date">May 7</span><a href="https://rivalvoices.substack.com/p/i-continue-to-be-unsure-about-the" target="_blank" rel="noopener">I continue to be unsure about the wisdom of having write-access to your own memories</a></li>
-      <li class="post"><span class="date">Apr 21</span><a href="https://rivalvoices.substack.com/p/misregistering" target="_blank" rel="noopener">Misregistering</a></li>
-      <li class="post"><span class="date">Apr 20</span><a href="https://rivalvoices.substack.com/p/i-cant-speak-portuguese-i-am-portuguese" target="_blank" rel="noopener">I can’t speak Portuguese. (I am Portuguese.)</a></li>
-      <li class="post"><span class="date">Feb 14</span><a href="https://rivalvoices.substack.com/p/anatomy-of-a-viral-tweet-2" target="_blank" rel="noopener">Anatomy of a Viral Tweet 2</a></li>
-      <li class="post"><span class="date">Jan 18</span><a href="https://rivalvoices.substack.com/p/the-radical-idea-of-functionalism" target="_blank" rel="noopener">The Radical Idea of Functionalism</a></li>
-      <li class="post"><span class="date">Jan 2</span><a href="https://rivalvoices.substack.com/p/bad-advice" target="_blank" rel="noopener">Bad Advice</a></li>
-      <li class="post"><span class="date">Jan 1</span><a href="https://rivalvoices.substack.com/p/on-the-origin-and-function-of-culture" target="_blank" rel="noopener">On the origin &amp; function of culture</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Aug 12</span><a href="https://rivalvoices.substack.com/p/therapy-1" target="_blank" rel="noopener">Therapy #1</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jun 30</span><a href="https://rivalvoices.substack.com/p/god-help-me-am-i-about-to-change" target="_blank" rel="noopener">God help me am I about to change my view on AI-assisted writing?</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jun 17</span><a href="https://rivalvoices.substack.com/p/normies-mistrust-weirdos-and-theyre" target="_blank" rel="noopener">Normies mistrust weirdos -- and they’re right to do so</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">May 22</span><a href="https://rivalvoices.substack.com/p/how-to-experience-the-true-nature" target="_blank" rel="noopener">The Direct Pointers That Have Worked Best for Me So Far</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">May 21</span><a href="https://rivalvoices.substack.com/p/we-need-to-talk-about-wwe-unreal" target="_blank" rel="noopener">We need to talk about WWE Unreal</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">May 18</span><a href="https://rivalvoices.substack.com/p/put-your-own-oxygen-mask-on-first" target="_blank" rel="noopener">Put your own oxygen mask on first before trying to help others</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">May 12</span><a href="https://rivalvoices.substack.com/p/lemmings" target="_blank" rel="noopener">Lemmings</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">May 11</span><a href="https://rivalvoices.substack.com/p/the-pig-or-wig-theory-of-populism" target="_blank" rel="noopener">The Pig-or-Wig Theory of Populism</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">May 7</span><a href="https://rivalvoices.substack.com/p/i-continue-to-be-unsure-about-the" target="_blank" rel="noopener">I continue to be unsure about the wisdom of having write-access to your own memories</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Apr 21</span><a href="https://rivalvoices.substack.com/p/misregistering" target="_blank" rel="noopener">Misregistering</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Apr 20</span><a href="https://rivalvoices.substack.com/p/i-cant-speak-portuguese-i-am-portuguese" target="_blank" rel="noopener">I can’t speak Portuguese. (I am Portuguese.)</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 14</span><a href="https://rivalvoices.substack.com/p/anatomy-of-a-viral-tweet-2" target="_blank" rel="noopener">Anatomy of a Viral Tweet 2</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 18</span><a href="https://rivalvoices.substack.com/p/the-radical-idea-of-functionalism" target="_blank" rel="noopener">The Radical Idea of Functionalism</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 2</span><a href="https://rivalvoices.substack.com/p/bad-advice" target="_blank" rel="noopener">Bad Advice</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 1</span><a href="https://rivalvoices.substack.com/p/on-the-origin-and-function-of-culture" target="_blank" rel="noopener">On the origin &amp; function of culture</a></li>
+      <li class="post" data-k="book" data-l="en"><span class="date"></span><a href="https://rivalvoices.gumroad.com/l/ags" target="_blank" rel="noopener">Alignment Gone Strange — Beta Draft</a></li>
+      <li class="post" data-k="book" data-l="en"><span class="date"></span><a href="https://rivalvoices.gumroad.com/l/collected" target="_blank" rel="noopener">Rival Voices — Collected Essays</a></li>
       <li class="year">2025</li>
-      <li class="post"><span class="date">Dec 22</span><a href="https://rivalvoices.substack.com/p/red-pillblue-pill-the-most-important" target="_blank" rel="noopener">Red Pill/Blue Pill — The most important Poll in the History of the internet</a></li>
-      <li class="post"><span class="date">Dec 14</span><a href="https://rivalvoices.substack.com/p/my-work-with-chris-lakin" target="_blank" rel="noopener">My Work with Chris Lakin</a></li>
-      <li class="post"><span class="date">Dec 3</span><a href="https://rivalvoices.substack.com/p/30-days-of-writing-my-inkhaven-experience" target="_blank" rel="noopener">30 Days of Writing: My Inkhaven Experience</a></li>
-      <li class="post"><span class="date">Nov 30</span><a href="https://rivalvoices.substack.com/p/human-writing-in-the-age-of-ai" target="_blank" rel="noopener">Human Writing in the Age of AI</a></li>
-      <li class="post"><span class="date">Nov 28</span><a href="https://rivalvoices.substack.com/p/on-foolishness" target="_blank" rel="noopener">On Foolishness</a></li>
-      <li class="post"><span class="date">Nov 28</span><a href="https://rivalvoices.substack.com/p/thanksgiving-shorts" target="_blank" rel="noopener">Thanksgiving Shorts</a></li>
-      <li class="post"><span class="date">Nov 26</span><a href="https://rivalvoices.substack.com/p/heartbroken" target="_blank" rel="noopener">Heartbroken</a></li>
-      <li class="post"><span class="date">Nov 26</span><a href="https://rivalvoices.substack.com/p/shorts" target="_blank" rel="noopener">“Shorts”</a></li>
-      <li class="post"><span class="date">Nov 25</span><a href="https://rivalvoices.substack.com/p/i-asked-what-jhanas-questions-you" target="_blank" rel="noopener">I asked what Jhanas questions you had. I wish I hadn’t.</a></li>
-      <li class="post"><span class="date">Nov 24</span><a href="https://rivalvoices.substack.com/p/eliezer-yudkowsky-thinks-chickens" target="_blank" rel="noopener">Eliezer Yudkowsky Thinks Chickens (and Babies) Aren’t Conscious and I Know Why</a></li>
-      <li class="post"><span class="date">Nov 23</span><a href="https://rivalvoices.substack.com/p/you-cant-judge-memes" target="_blank" rel="noopener">You Can’t Judge Memes</a></li>
-      <li class="post"><span class="date">Nov 22</span><a href="https://rivalvoices.substack.com/p/day-21-ed6" target="_blank" rel="noopener">Day 21</a></li>
-      <li class="post"><span class="date">Nov 21</span><a href="https://rivalvoices.substack.com/p/vagueness-is-good" target="_blank" rel="noopener">Vagueness is good.</a></li>
-      <li class="post"><span class="date">Nov 20</span><a href="https://rivalvoices.substack.com/p/i-feel-bad-and-i-dont-wanna-write" target="_blank" rel="noopener">I Feel Bad and Don’t Wanna Write</a></li>
-      <li class="post"><span class="date">Nov 19</span><a href="https://rivalvoices.substack.com/p/anatomy-of-a-viral-tweet" target="_blank" rel="noopener">Anatomy of a Viral Tweet</a></li>
-      <li class="post"><span class="date">Nov 18</span><a href="https://rivalvoices.substack.com/p/open-memetics-institute" target="_blank" rel="noopener">“Open Memetics Institute”</a></li>
-      <li class="post"><span class="date">Nov 16</span><span class="title">Why we fight</span></li>
-      <li class="post"><span class="date">Nov 15</span><a href="https://www.type1type2.com/p/what-are-we-fighting-for" target="_blank" rel="noopener">What are we fighting for?</a></li>
-      <li class="post"><span class="date">Nov 15</span><span class="title">This is war</span></li>
-      <li class="post"><span class="date">Nov 14</span><span class="title">Semantic Arbitrage</span></li>
-      <li class="post"><span class="date">Nov 13</span><span class="title">The Picture Theory of Language</span></li>
-      <li class="post"><span class="date">Nov 12</span><span class="title">Why Kind Words Don&#x27;t Last</span></li>
-      <li class="post"><span class="date">Nov 10</span><a href="https://www.type1type2.com/p/enter-adversariality" target="_blank" rel="noopener">Enter Adversariality</a></li>
-      <li class="post"><span class="date">Nov 10</span><span class="title">Why this is so complex</span></li>
-      <li class="post"><span class="date">Nov 9</span><span class="title">Naming, Renaming, and Inventing</span></li>
-      <li class="post"><span class="date">Nov 8</span><span class="title">What&#x27;s in a rename?</span></li>
-      <li class="post"><span class="date">Nov 6</span><a href="https://www.type1type2.com/p/making-a-new-type-of-guy-1a0" target="_blank" rel="noopener">Making a New Type of Guy (To Get Mad At)</a></li>
-      <li class="post"><span class="date">Nov 6</span><a href="https://www.type1type2.com/p/interregnum-visas-dictum" target="_blank" rel="noopener">[Interregnum:] Visa&#x27;s dictum</a></li>
-      <li class="post"><span class="date">Nov 4</span><a href="https://www.type1type2.com/p/making-a-new-type-of-guy" target="_blank" rel="noopener">Making a New Type of Guy (To Comply)</a></li>
-      <li class="post"><span class="date">Nov 4</span><a href="https://www.type1type2.com/p/whats-in-a-name" target="_blank" rel="noopener">&quot;What&#x27;s in a name?&quot;</a></li>
-      <li class="post"><span class="date">Nov 3</span><a href="https://www.type1type2.com/p/the-arbitrage-window" target="_blank" rel="noopener">The Arbitrage Window</a></li>
-      <li class="post"><span class="date">Nov 2</span><a href="https://www.type1type2.com/p/type-1-type-2-81c" target="_blank" rel="noopener">Type 1 Type 2</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 22</span><a href="https://rivalvoices.substack.com/p/red-pillblue-pill-the-most-important" target="_blank" rel="noopener">Red Pill/Blue Pill — The most important Poll in the History of the internet</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 14</span><a href="https://rivalvoices.substack.com/p/my-work-with-chris-lakin" target="_blank" rel="noopener">My Work with Chris Lakin</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 3</span><a href="https://rivalvoices.substack.com/p/30-days-of-writing-my-inkhaven-experience" target="_blank" rel="noopener">30 Days of Writing: My Inkhaven Experience</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 30</span><a href="https://rivalvoices.substack.com/p/human-writing-in-the-age-of-ai" target="_blank" rel="noopener">Human Writing in the Age of AI</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 28</span><a href="https://rivalvoices.substack.com/p/on-foolishness" target="_blank" rel="noopener">On Foolishness</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 28</span><a href="https://rivalvoices.substack.com/p/thanksgiving-shorts" target="_blank" rel="noopener">Thanksgiving Shorts</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 26</span><a href="https://rivalvoices.substack.com/p/heartbroken" target="_blank" rel="noopener">Heartbroken</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 26</span><a href="https://rivalvoices.substack.com/p/shorts" target="_blank" rel="noopener">“Shorts”</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 25</span><a href="https://rivalvoices.substack.com/p/i-asked-what-jhanas-questions-you" target="_blank" rel="noopener">I asked what Jhanas questions you had. I wish I hadn’t.</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 24</span><a href="https://rivalvoices.substack.com/p/eliezer-yudkowsky-thinks-chickens" target="_blank" rel="noopener">Eliezer Yudkowsky Thinks Chickens (and Babies) Aren’t Conscious and I Know Why</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 23</span><a href="https://rivalvoices.substack.com/p/you-cant-judge-memes" target="_blank" rel="noopener">You Can’t Judge Memes</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 22</span><a href="https://rivalvoices.substack.com/p/day-21-ed6" target="_blank" rel="noopener">Day 21</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 21</span><a href="https://rivalvoices.substack.com/p/vagueness-is-good" target="_blank" rel="noopener">Vagueness is good.</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 20</span><a href="https://rivalvoices.substack.com/p/i-feel-bad-and-i-dont-wanna-write" target="_blank" rel="noopener">I Feel Bad and Don’t Wanna Write</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 19</span><a href="https://rivalvoices.substack.com/p/anatomy-of-a-viral-tweet" target="_blank" rel="noopener">Anatomy of a Viral Tweet</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 18</span><a href="https://rivalvoices.substack.com/p/open-memetics-institute" target="_blank" rel="noopener">“Open Memetics Institute”</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 16</span><span class="title">Why we fight</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 15</span><a href="https://www.type1type2.com/p/what-are-we-fighting-for" target="_blank" rel="noopener">What are we fighting for?</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 15</span><span class="title">This is war</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 14</span><span class="title">Semantic Arbitrage</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 13</span><span class="title">The Picture Theory of Language</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 12</span><span class="title">Why Kind Words Don&#x27;t Last</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 10</span><a href="https://www.type1type2.com/p/enter-adversariality" target="_blank" rel="noopener">Enter Adversariality</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 10</span><span class="title">Why this is so complex</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 9</span><span class="title">Naming, Renaming, and Inventing</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 8</span><span class="title">What&#x27;s in a rename?</span></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 6</span><a href="https://www.type1type2.com/p/making-a-new-type-of-guy-1a0" target="_blank" rel="noopener">Making a New Type of Guy (To Get Mad At)</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 6</span><a href="https://www.type1type2.com/p/interregnum-visas-dictum" target="_blank" rel="noopener">[Interregnum:] Visa&#x27;s dictum</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 4</span><a href="https://www.type1type2.com/p/making-a-new-type-of-guy" target="_blank" rel="noopener">Making a New Type of Guy (To Comply)</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 4</span><a href="https://www.type1type2.com/p/whats-in-a-name" target="_blank" rel="noopener">&quot;What&#x27;s in a name?&quot;</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 3</span><a href="https://www.type1type2.com/p/the-arbitrage-window" target="_blank" rel="noopener">The Arbitrage Window</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 2</span><a href="https://www.type1type2.com/p/type-1-type-2-81c" target="_blank" rel="noopener">Type 1 Type 2</a></li>
       <li class="year">2024</li>
-      <li class="post"><span class="date">Oct 9</span><a href="https://rivalvoices.substack.com/p/youre-not-powerless-youre-just-under" target="_blank" rel="noopener">You&#x27;re not powerless, you&#x27;re just under attack.</a></li>
-      <li class="post"><span class="date">Oct 8</span><a href="https://rivalvoices.substack.com/p/reasoning-through-what-you-cant-see" target="_blank" rel="noopener">Reasoning through what you can&#x27;t see but must be</a></li>
-      <li class="post"><span class="date">Sep 27</span><a href="https://rivalvoices.substack.com/p/arbitrage" target="_blank" rel="noopener">Arbitrage</a></li>
-      <li class="post"><span class="date">Sep 26</span><a href="https://rivalvoices.substack.com/p/on-magic-and-magicians" target="_blank" rel="noopener">On Magic and Magicians</a></li>
-      <li class="post"><span class="date">Sep 25</span><a href="https://rivalvoices.substack.com/p/the-ultimatum-game" target="_blank" rel="noopener">The Ultimatum Game</a></li>
-      <li class="post"><span class="date">Sep 24</span><a href="https://rivalvoices.substack.com/p/antisocial-social-people" target="_blank" rel="noopener">Antisocial social people</a></li>
-      <li class="post"><span class="date">Sep 23</span><a href="https://rivalvoices.substack.com/p/the-irl-skilltree-is-lopsided" target="_blank" rel="noopener">The irl skilltree is lopsided</a></li>
-      <li class="post"><span class="date">Feb 23</span><a href="https://www.palladiummag.com/2024/02/23/who-is-portugal-for/" target="_blank" rel="noopener">Who Is Portugal For? — Palladium</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Oct 9</span><a href="https://rivalvoices.substack.com/p/youre-not-powerless-youre-just-under" target="_blank" rel="noopener">You&#x27;re not powerless, you&#x27;re just under attack.</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Oct 8</span><a href="https://rivalvoices.substack.com/p/reasoning-through-what-you-cant-see" target="_blank" rel="noopener">Reasoning through what you can&#x27;t see but must be</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Sep 27</span><a href="https://rivalvoices.substack.com/p/arbitrage" target="_blank" rel="noopener">Arbitrage</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Sep 26</span><a href="https://rivalvoices.substack.com/p/on-magic-and-magicians" target="_blank" rel="noopener">On Magic and Magicians</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Sep 25</span><a href="https://rivalvoices.substack.com/p/the-ultimatum-game" target="_blank" rel="noopener">The Ultimatum Game</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Sep 24</span><a href="https://rivalvoices.substack.com/p/antisocial-social-people" target="_blank" rel="noopener">Antisocial social people</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Sep 23</span><a href="https://rivalvoices.substack.com/p/the-irl-skilltree-is-lopsided" target="_blank" rel="noopener">The irl skilltree is lopsided</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 23</span><a href="https://www.palladiummag.com/2024/02/23/who-is-portugal-for/" target="_blank" rel="noopener">Who Is Portugal For? — Palladium</a></li>
       <li class="year">2023</li>
-      <li class="post"><span class="date">Jan 27</span><a href="https://rivalvoices.substack.com/p/foresight-institute-vision-weekend" target="_blank" rel="noopener">Foresight Institute: Vision Weekend</a></li>
-      <li class="post"><span class="date">Jan 20</span><a href="https://rivalvoices.substack.com/p/open-and-closed" target="_blank" rel="noopener">Open and Closed</a></li>
-      <li class="post"><span class="date">Jan 14</span><a href="https://rivalvoices.substack.com/p/rebel-wisdom-the-last-campfire" target="_blank" rel="noopener">Rebel Wisdom: The Last Campfire</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 27</span><a href="https://rivalvoices.substack.com/p/foresight-institute-vision-weekend" target="_blank" rel="noopener">Foresight Institute: Vision Weekend</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 20</span><a href="https://rivalvoices.substack.com/p/open-and-closed" target="_blank" rel="noopener">Open and Closed</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 14</span><a href="https://rivalvoices.substack.com/p/rebel-wisdom-the-last-campfire" target="_blank" rel="noopener">Rebel Wisdom: The Last Campfire</a></li>
+      <li class="year">2022</li>
+      <li class="post" data-k="book" data-l="pt"><span class="date"></span><a href="https://rivalvoices.gumroad.com/l/desdurmimentos" target="_blank" rel="noopener">Desdurmimentos</a></li>
       <li class="year">2021</li>
-      <li class="post"><span class="date">Jan 26</span><a href="https://rivalvoices.substack.com/p/conspiracy-theorism" target="_blank" rel="noopener">Conspiracy Theorism</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 26</span><a href="https://rivalvoices.substack.com/p/conspiracy-theorism" target="_blank" rel="noopener">Conspiracy Theorism</a></li>
       <li class="year">2020</li>
-      <li class="post"><span class="date">Mar 11</span><a href="https://rivalvoices.substack.com/p/what-even-is-focusing-and-why-eugene" target="_blank" rel="noopener">What even is Focusing and why Eugene Gendlin is the greatest man to ever grace the Earth with his existence</a></li>
-      <li class="post"><span class="date">Feb 12</span><a href="https://rivalvoices.substack.com/p/fuck-it-we-ball-on-rats-postrats" target="_blank" rel="noopener">Fuck it, we ball: on rats, postrats, metarats, nrx what distinguishes and generated them</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Mar 11</span><a href="https://rivalvoices.substack.com/p/what-even-is-focusing-and-why-eugene" target="_blank" rel="noopener">What even is Focusing and why Eugene Gendlin is the greatest man to ever grace the Earth with his existence</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 12</span><a href="https://rivalvoices.substack.com/p/fuck-it-we-ball-on-rats-postrats" target="_blank" rel="noopener">Fuck it, we ball: on rats, postrats, metarats, nrx what distinguishes and generated them</a></li>
+      <li class="post" data-k="book" data-l="en"><span class="date"></span><a href="https://rivalvoices.gumroad.com/l/woNSN" target="_blank" rel="noopener">not even draft</a></li>
       <li class="year">2019</li>
-      <li class="post"><span class="date">Dec 10</span><a href="https://rivalvoices.wordpress.com/2019/12/10/%f0%9f%a4%94introduction-to-philosophy-%f0%9f%a4%94/" target="_blank" rel="noopener">??Introduction to Philosophy ??</a></li>
-      <li class="post"><span class="date">Jun 28</span><a href="https://rivalvoices.wordpress.com/2019/06/28/unlocking-effortless-planning/" target="_blank" rel="noopener">Unlocking effortless planning</a></li>
-      <li class="post"><span class="date">Jun 21</span><a href="https://rivalvoices.wordpress.com/2019/06/21/experiences-of-depression/" target="_blank" rel="noopener">Experiences of Depression</a></li>
-      <li class="post"><span class="date">Jan 1</span><a href="https://rivalvoices.wordpress.com/2019/01/01/how-to-do-a-yearly-review/" target="_blank" rel="noopener">How to do a Yearly Review</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 10</span><a href="https://rivalvoices.wordpress.com/2019/12/10/%f0%9f%a4%94introduction-to-philosophy-%f0%9f%a4%94/" target="_blank" rel="noopener">??Introduction to Philosophy ??</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jun 28</span><a href="https://rivalvoices.wordpress.com/2019/06/28/unlocking-effortless-planning/" target="_blank" rel="noopener">Unlocking effortless planning</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jun 21</span><a href="https://rivalvoices.wordpress.com/2019/06/21/experiences-of-depression/" target="_blank" rel="noopener">Experiences of Depression</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 1</span><a href="https://rivalvoices.wordpress.com/2019/01/01/how-to-do-a-yearly-review/" target="_blank" rel="noopener">How to do a Yearly Review</a></li>
       <li class="year">2018</li>
-      <li class="post"><span class="date">Dec 26</span><a href="https://rivalvoices.wordpress.com/2018/12/26/let-us-be-frank/" target="_blank" rel="noopener">LET US BE FRANK</a></li>
-      <li class="post"><span class="date">Nov 29</span><a href="https://rivalvoices.wordpress.com/2018/11/29/seeing/" target="_blank" rel="noopener">SEEING</a></li>
-      <li class="post"><span class="date">Nov 23</span><a href="https://rivalvoices.wordpress.com/2018/11/23/how-to-explain-anything-to-anyone-commentary/" target="_blank" rel="noopener">How to Explain Anything to Anyone (Commentary)</a></li>
-      <li class="post"><span class="date">Nov 16</span><a href="https://rivalvoices.wordpress.com/2018/11/16/words-words-words-everywhere-and-not-a-thought-to-be-thought/" target="_blank" rel="noopener">Words, words, words everywhere, and not a thought to be thought</a></li>
-      <li class="post"><span class="date">Jul 21</span><a href="https://rivalvoices.wordpress.com/2018/07/21/war-and-why-it-matters-to-you/" target="_blank" rel="noopener">War, and why it matters to you</a></li>
-      <li class="post"><span class="date">Jul 6</span><a href="https://rivalvoices.wordpress.com/2018/07/06/read-this-if-you-cant-tell-what-you-feel/" target="_blank" rel="noopener">Read this if you can&#x27;t tell what you feel</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 26</span><a href="https://rivalvoices.wordpress.com/2018/12/26/let-us-be-frank/" target="_blank" rel="noopener">LET US BE FRANK</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 29</span><a href="https://rivalvoices.wordpress.com/2018/11/29/seeing/" target="_blank" rel="noopener">SEEING</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 23</span><a href="https://rivalvoices.wordpress.com/2018/11/23/how-to-explain-anything-to-anyone-commentary/" target="_blank" rel="noopener">How to Explain Anything to Anyone (Commentary)</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 16</span><a href="https://rivalvoices.wordpress.com/2018/11/16/words-words-words-everywhere-and-not-a-thought-to-be-thought/" target="_blank" rel="noopener">Words, words, words everywhere, and not a thought to be thought</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jul 21</span><a href="https://rivalvoices.wordpress.com/2018/07/21/war-and-why-it-matters-to-you/" target="_blank" rel="noopener">War, and why it matters to you</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jul 6</span><a href="https://rivalvoices.wordpress.com/2018/07/06/read-this-if-you-cant-tell-what-you-feel/" target="_blank" rel="noopener">Read this if you can&#x27;t tell what you feel</a></li>
       <li class="year">2017</li>
-      <li class="post"><span class="date">Aug 2</span><a href="https://rivalvoices.wordpress.com/2017/08/02/the-cure/" target="_blank" rel="noopener">The Cure.</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Aug 2</span><a href="https://rivalvoices.wordpress.com/2017/08/02/the-cure/" target="_blank" rel="noopener">The Cure.</a></li>
       <li class="year">2016</li>
-      <li class="post"><span class="date">Jul 23</span><a href="https://rivalvoices.wordpress.com/2016/07/23/in-defense-of-not-updating-in-response-to-arguments/" target="_blank" rel="noopener">In defense of not updating in response to arguments</a></li>
-      <li class="post"><span class="date">Mar 17</span><a href="https://rivalvoices.wordpress.com/2016/03/17/psychology-is-a-lie-all-is-politics-all-is-war/" target="_blank" rel="noopener">Science is politics, politics is war, war is deception, psychology is a lie.</a></li>
-      <li class="post"><span class="date">Mar 16</span><a href="https://rivalvoices.wordpress.com/2016/03/16/science-as-force-science-as-activity/" target="_blank" rel="noopener">Science as Force, science as activity</a></li>
-      <li class="post"><span class="date">Mar 14</span><a href="https://rivalvoices.wordpress.com/2016/03/14/on-the-creation-of-great-men-as-a-necessity-for-scientific-progress/" target="_blank" rel="noopener">On the creation of Great Men as a necessity for Scientific Progress</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jul 23</span><a href="https://rivalvoices.wordpress.com/2016/07/23/in-defense-of-not-updating-in-response-to-arguments/" target="_blank" rel="noopener">In defense of not updating in response to arguments</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Mar 17</span><a href="https://rivalvoices.wordpress.com/2016/03/17/psychology-is-a-lie-all-is-politics-all-is-war/" target="_blank" rel="noopener">Science is politics, politics is war, war is deception, psychology is a lie.</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Mar 16</span><a href="https://rivalvoices.wordpress.com/2016/03/16/science-as-force-science-as-activity/" target="_blank" rel="noopener">Science as Force, science as activity</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Mar 14</span><a href="https://rivalvoices.wordpress.com/2016/03/14/on-the-creation-of-great-men-as-a-necessity-for-scientific-progress/" target="_blank" rel="noopener">On the creation of Great Men as a necessity for Scientific Progress</a></li>
       <li class="year">2015</li>
-      <li class="post"><span class="date">Mar 18</span><a href="https://rivalvoices.wordpress.com/2015/03/18/my-experience-with-depersonalizationderealization/" target="_blank" rel="noopener">My experience with depersonalization/derealization</a></li>
-      <li class="post"><span class="date">Mar 17</span><a href="https://rivalvoices.wordpress.com/2015/03/17/on-additive-meditation/" target="_blank" rel="noopener">On Additive Meditation</a></li>
-      <li class="post"><span class="date">Feb 27</span><a href="https://rivalvoices.wordpress.com/2015/02/27/exploratory-thinking-individual-and-social-ethics-morals-for-the-godless/" target="_blank" rel="noopener">Exploratory thinking: Individual and social ethics &amp; morals for the Godless</a></li>
-      <li class="post"><span class="date">Feb 25</span><a href="https://rivalvoices.wordpress.com/2015/02/25/evolving-gtd-a-life-design-system-that-takes-you-into-account/" target="_blank" rel="noopener">Evolving GTD: A life design system that takes you into account</a></li>
-      <li class="post"><span class="date">Feb 13</span><a href="https://rivalvoices.wordpress.com/2015/02/13/my-experience-with-improv-the-book-and-the-activity/" target="_blank" rel="noopener">My experience with Impro[v] (the book and the activity)</a></li>
-      <li class="post"><span class="date">Feb 5</span><a href="https://rivalvoices.wordpress.com/2015/02/05/what-comes-after-rationality-adventure/" target="_blank" rel="noopener">What comes after rationality? Adventure!</a></li>
-      <li class="post"><span class="date">Feb 4</span><a href="https://rivalvoices.wordpress.com/2015/02/04/how-does-one-act-under-maximum-life-ambiguity/" target="_blank" rel="noopener">How does one act under maximum life ambiguity?</a></li>
-      <li class="post"><span class="date">Jan 29</span><a href="https://rivalvoices.wordpress.com/2015/01/29/creativity-monsters-reefs-and-refactoring/" target="_blank" rel="noopener">Creativity, monsters, reefs and refactoring.</a></li>
-      <li class="post"><span class="date">Jan 13</span><a href="https://rivalvoices.wordpress.com/2015/01/13/starving-for-worldviews/" target="_blank" rel="noopener">Starving for Worldviews</a></li>
-      <li class="post"><span class="date">Jan 12</span><a href="https://rivalvoices.wordpress.com/2015/01/12/discourse-legibility/" target="_blank" rel="noopener">Discourse: Legibility</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Mar 18</span><a href="https://rivalvoices.wordpress.com/2015/03/18/my-experience-with-depersonalizationderealization/" target="_blank" rel="noopener">My experience with depersonalization/derealization</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Mar 17</span><a href="https://rivalvoices.wordpress.com/2015/03/17/on-additive-meditation/" target="_blank" rel="noopener">On Additive Meditation</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 27</span><a href="https://rivalvoices.wordpress.com/2015/02/27/exploratory-thinking-individual-and-social-ethics-morals-for-the-godless/" target="_blank" rel="noopener">Exploratory thinking: Individual and social ethics &amp; morals for the Godless</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 25</span><a href="https://rivalvoices.wordpress.com/2015/02/25/evolving-gtd-a-life-design-system-that-takes-you-into-account/" target="_blank" rel="noopener">Evolving GTD: A life design system that takes you into account</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 13</span><a href="https://rivalvoices.wordpress.com/2015/02/13/my-experience-with-improv-the-book-and-the-activity/" target="_blank" rel="noopener">My experience with Impro[v] (the book and the activity)</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 5</span><a href="https://rivalvoices.wordpress.com/2015/02/05/what-comes-after-rationality-adventure/" target="_blank" rel="noopener">What comes after rationality? Adventure!</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Feb 4</span><a href="https://rivalvoices.wordpress.com/2015/02/04/how-does-one-act-under-maximum-life-ambiguity/" target="_blank" rel="noopener">How does one act under maximum life ambiguity?</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 29</span><a href="https://rivalvoices.wordpress.com/2015/01/29/creativity-monsters-reefs-and-refactoring/" target="_blank" rel="noopener">Creativity, monsters, reefs and refactoring.</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 13</span><a href="https://rivalvoices.wordpress.com/2015/01/13/starving-for-worldviews/" target="_blank" rel="noopener">Starving for Worldviews</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Jan 12</span><a href="https://rivalvoices.wordpress.com/2015/01/12/discourse-legibility/" target="_blank" rel="noopener">Discourse: Legibility</a></li>
       <li class="year">2014</li>
-      <li class="post"><span class="date">Dec 22</span><a href="https://rivalvoices.wordpress.com/2014/12/22/month-review/" target="_blank" rel="noopener">Month Review</a></li>
-      <li class="post"><span class="date">Dec 21</span><a href="https://rivalvoices.wordpress.com/2014/12/21/is-intuition-god/" target="_blank" rel="noopener">Is intuition God?</a></li>
-      <li class="post"><span class="date">Dec 20</span><a href="https://rivalvoices.wordpress.com/2014/12/20/god-and-rationality/" target="_blank" rel="noopener">God and Rationality</a></li>
-      <li class="post"><span class="date">Dec 19</span><a href="https://rivalvoices.wordpress.com/2014/12/19/modernised-philosophies-for-living/" target="_blank" rel="noopener">Modern(ised) Philosophies for Living</a></li>
-      <li class="post"><span class="date">Dec 18</span><a href="https://rivalvoices.wordpress.com/2014/12/18/s1-s2-and-superego/" target="_blank" rel="noopener">S1, S2 and superego</a></li>
-      <li class="post"><span class="date">Dec 17</span><a href="https://rivalvoices.wordpress.com/2014/12/17/aliefology-and-beliefology/" target="_blank" rel="noopener">Aliefology and Beliefology</a></li>
-      <li class="post"><span class="date">Dec 16</span><a href="https://rivalvoices.wordpress.com/2014/12/16/societal-map-corruption/" target="_blank" rel="noopener">Societal Map Corruption</a></li>
-      <li class="post"><span class="date">Dec 15</span><a href="https://rivalvoices.wordpress.com/2014/12/15/transformative-practices-and-isolation/" target="_blank" rel="noopener">Transformative Practices and Isolation</a></li>
-      <li class="post"><span class="date">Dec 14</span><a href="https://rivalvoices.wordpress.com/2014/12/14/harvesting-monsters-to-advance-worldviews/" target="_blank" rel="noopener">Harvesting Monsters to Advance Worldviews</a></li>
-      <li class="post"><span class="date">Dec 13</span><a href="https://rivalvoices.wordpress.com/2014/12/13/developmental-views-and-rationality/" target="_blank" rel="noopener">Developmental views and rationality</a></li>
-      <li class="post"><span class="date">Dec 12</span><a href="https://rivalvoices.wordpress.com/2014/12/12/origin-of-variance-heuristic/" target="_blank" rel="noopener">Origin of variance heuristic</a></li>
-      <li class="post"><span class="date">Dec 11</span><a href="https://rivalvoices.wordpress.com/2014/12/11/knowledge-and-control-effectuation-vs-causation/" target="_blank" rel="noopener">Knowledge and Control: Effectuation vs causation</a></li>
-      <li class="post"><span class="date">Dec 10</span><a href="https://rivalvoices.wordpress.com/2014/12/10/epistemic-virtues/" target="_blank" rel="noopener">Epistemic Virtues</a></li>
-      <li class="post"><span class="date">Dec 9</span><a href="https://rivalvoices.wordpress.com/2014/12/09/not-idea-zombiology-idea-resurrection-biology/" target="_blank" rel="noopener">Not idea zombiology, idea resurrection biology</a></li>
-      <li class="post"><span class="date">Dec 8</span><a href="https://rivalvoices.wordpress.com/2014/12/08/definitions-matter/" target="_blank" rel="noopener">Definitions matter</a></li>
-      <li class="post"><span class="date">Dec 7</span><a href="https://rivalvoices.wordpress.com/2014/12/07/imprudent-formalisation/" target="_blank" rel="noopener">Imprudent formalisation</a></li>
-      <li class="post"><span class="date">Dec 6</span><a href="https://rivalvoices.wordpress.com/2014/12/06/you-cant-optimize-anything-literally/" target="_blank" rel="noopener">You can&#x27;t optimise anything, literally</a></li>
-      <li class="post"><span class="date">Dec 5</span><a href="https://rivalvoices.wordpress.com/2014/12/05/modelling-map-aggregation/" target="_blank" rel="noopener">Modelling map aggregation</a></li>
-      <li class="post"><span class="date">Dec 5</span><a href="https://rivalvoices.wordpress.com/2014/12/05/theories-as-maps-theories-as-engines/" target="_blank" rel="noopener">Theories as maps, theories as engines</a></li>
-      <li class="post"><span class="date">Dec 4</span><a href="https://rivalvoices.wordpress.com/2014/12/04/overanalyzing-shock/" target="_blank" rel="noopener">Overanalysing shock</a></li>
-      <li class="post"><span class="date">Dec 2</span><a href="https://rivalvoices.wordpress.com/2014/12/02/considerations-on-heuristics-for-map-making-your-naive-reasoning-mechanisms-suck/" target="_blank" rel="noopener">Considerations on heuristics for map-making: your naive reasoning mechanisms suck</a></li>
-      <li class="post"><span class="date">Dec 1</span><a href="https://rivalvoices.wordpress.com/2014/12/01/not-even-falsifiable-worldviews-as-fashion/" target="_blank" rel="noopener">Not even falsifiable: Worldviews as fashion</a></li>
-      <li class="post"><span class="date">Nov 30</span><a href="https://rivalvoices.wordpress.com/2014/11/30/the-great-encrypted-broken-telephone-beauty-contest/" target="_blank" rel="noopener">The great encrypted broken telephone beauty contests</a></li>
-      <li class="post"><span class="date">Nov 29</span><a href="https://rivalvoices.wordpress.com/2014/11/29/angst-and-lovecraftian-monsters/" target="_blank" rel="noopener">Angst and Lovecraftian Monsters</a></li>
-      <li class="post"><span class="date">Nov 27</span><a href="https://rivalvoices.wordpress.com/2014/11/27/reason-eating-itself/" target="_blank" rel="noopener">Reason eating itself</a></li>
-      <li class="post"><span class="date">Nov 26</span><a href="https://rivalvoices.wordpress.com/2014/11/26/on-why-speaking-to-hedgehogs-doesnt-come-naturally-to-me/" target="_blank" rel="noopener">On why speaking to hedgehogs doesn&#x27;t come naturally to me</a></li>
-      <li class="post"><span class="date">Nov 25</span><a href="https://rivalvoices.wordpress.com/2014/11/25/on-creating-a-map-amidst-strategic-deception-attempts/" target="_blank" rel="noopener">On creating a map amidst strategic deception attempts</a></li>
-      <li class="post"><span class="date">Nov 25</span><a href="https://rivalvoices.wordpress.com/2014/11/25/why-i-dont-want-to-make-my-models-explicit/" target="_blank" rel="noopener">Why I don&#x27;t want to make my models explicit</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 22</span><a href="https://rivalvoices.wordpress.com/2014/12/22/month-review/" target="_blank" rel="noopener">Month Review</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 21</span><a href="https://rivalvoices.wordpress.com/2014/12/21/is-intuition-god/" target="_blank" rel="noopener">Is intuition God?</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 20</span><a href="https://rivalvoices.wordpress.com/2014/12/20/god-and-rationality/" target="_blank" rel="noopener">God and Rationality</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 19</span><a href="https://rivalvoices.wordpress.com/2014/12/19/modernised-philosophies-for-living/" target="_blank" rel="noopener">Modern(ised) Philosophies for Living</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 18</span><a href="https://rivalvoices.wordpress.com/2014/12/18/s1-s2-and-superego/" target="_blank" rel="noopener">S1, S2 and superego</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 17</span><a href="https://rivalvoices.wordpress.com/2014/12/17/aliefology-and-beliefology/" target="_blank" rel="noopener">Aliefology and Beliefology</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 16</span><a href="https://rivalvoices.wordpress.com/2014/12/16/societal-map-corruption/" target="_blank" rel="noopener">Societal Map Corruption</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 15</span><a href="https://rivalvoices.wordpress.com/2014/12/15/transformative-practices-and-isolation/" target="_blank" rel="noopener">Transformative Practices and Isolation</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 14</span><a href="https://rivalvoices.wordpress.com/2014/12/14/harvesting-monsters-to-advance-worldviews/" target="_blank" rel="noopener">Harvesting Monsters to Advance Worldviews</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 13</span><a href="https://rivalvoices.wordpress.com/2014/12/13/developmental-views-and-rationality/" target="_blank" rel="noopener">Developmental views and rationality</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 12</span><a href="https://rivalvoices.wordpress.com/2014/12/12/origin-of-variance-heuristic/" target="_blank" rel="noopener">Origin of variance heuristic</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 11</span><a href="https://rivalvoices.wordpress.com/2014/12/11/knowledge-and-control-effectuation-vs-causation/" target="_blank" rel="noopener">Knowledge and Control: Effectuation vs causation</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 10</span><a href="https://rivalvoices.wordpress.com/2014/12/10/epistemic-virtues/" target="_blank" rel="noopener">Epistemic Virtues</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 9</span><a href="https://rivalvoices.wordpress.com/2014/12/09/not-idea-zombiology-idea-resurrection-biology/" target="_blank" rel="noopener">Not idea zombiology, idea resurrection biology</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 8</span><a href="https://rivalvoices.wordpress.com/2014/12/08/definitions-matter/" target="_blank" rel="noopener">Definitions matter</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 7</span><a href="https://rivalvoices.wordpress.com/2014/12/07/imprudent-formalisation/" target="_blank" rel="noopener">Imprudent formalisation</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 6</span><a href="https://rivalvoices.wordpress.com/2014/12/06/you-cant-optimize-anything-literally/" target="_blank" rel="noopener">You can&#x27;t optimise anything, literally</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 5</span><a href="https://rivalvoices.wordpress.com/2014/12/05/modelling-map-aggregation/" target="_blank" rel="noopener">Modelling map aggregation</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 5</span><a href="https://rivalvoices.wordpress.com/2014/12/05/theories-as-maps-theories-as-engines/" target="_blank" rel="noopener">Theories as maps, theories as engines</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 4</span><a href="https://rivalvoices.wordpress.com/2014/12/04/overanalyzing-shock/" target="_blank" rel="noopener">Overanalysing shock</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 2</span><a href="https://rivalvoices.wordpress.com/2014/12/02/considerations-on-heuristics-for-map-making-your-naive-reasoning-mechanisms-suck/" target="_blank" rel="noopener">Considerations on heuristics for map-making: your naive reasoning mechanisms suck</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Dec 1</span><a href="https://rivalvoices.wordpress.com/2014/12/01/not-even-falsifiable-worldviews-as-fashion/" target="_blank" rel="noopener">Not even falsifiable: Worldviews as fashion</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 30</span><a href="https://rivalvoices.wordpress.com/2014/11/30/the-great-encrypted-broken-telephone-beauty-contest/" target="_blank" rel="noopener">The great encrypted broken telephone beauty contests</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 29</span><a href="https://rivalvoices.wordpress.com/2014/11/29/angst-and-lovecraftian-monsters/" target="_blank" rel="noopener">Angst and Lovecraftian Monsters</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 27</span><a href="https://rivalvoices.wordpress.com/2014/11/27/reason-eating-itself/" target="_blank" rel="noopener">Reason eating itself</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 26</span><a href="https://rivalvoices.wordpress.com/2014/11/26/on-why-speaking-to-hedgehogs-doesnt-come-naturally-to-me/" target="_blank" rel="noopener">On why speaking to hedgehogs doesn&#x27;t come naturally to me</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 25</span><a href="https://rivalvoices.wordpress.com/2014/11/25/on-creating-a-map-amidst-strategic-deception-attempts/" target="_blank" rel="noopener">On creating a map amidst strategic deception attempts</a></li>
+      <li class="post" data-k="essay" data-l="en"><span class="date">Nov 25</span><a href="https://rivalvoices.wordpress.com/2014/11/25/why-i-dont-want-to-make-my-models-explicit/" target="_blank" rel="noopener">Why I don&#x27;t want to make my models explicit</a></li>
       <li class="year">2011</li>
-      <li class="post"><span class="date">Nov 18</span><a href="https://desdurmir.wordpress.com/2011/11/18/abomino-te/" target="_blank" rel="noopener">Abomino-te</a></li>
-      <li class="post"><span class="date">Nov 14</span><a href="https://desdurmir.wordpress.com/2011/11/14/pano-fim-da-peca/" target="_blank" rel="noopener">mif</a></li>
-      <li class="post"><span class="date">Jun 15</span><a href="https://desdurmir.wordpress.com/2011/06/15/perspectivas/" target="_blank" rel="noopener">Perspectivas</a></li>
-      <li class="post"><span class="date">Jun 13</span><a href="https://desdurmir.wordpress.com/2011/06/13/o-carrasco-indiano/" target="_blank" rel="noopener">O Carrasco Indiano</a></li>
-      <li class="post"><span class="date">Jun 9</span><a href="https://desdurmir.wordpress.com/2011/06/09/fumo-divino/" target="_blank" rel="noopener">Fumo Divino</a></li>
-      <li class="post"><span class="date">Jun 8</span><a href="https://desdurmir.wordpress.com/2011/06/08/amor-e-baloes/" target="_blank" rel="noopener">Amor e Balões</a></li>
-      <li class="post"><span class="date">Jun 7</span><a href="https://desdurmir.wordpress.com/2011/06/07/mais-um-conto-fantastico/" target="_blank" rel="noopener">Mais um conto fantástico</a></li>
-      <li class="post"><span class="date">Jun 7</span><a href="https://desdurmir.wordpress.com/2011/06/07/gutenberg-e-marx-uma-alegoria/" target="_blank" rel="noopener">Gutenberg e Marx – Uma alegoria</a></li>
-      <li class="post"><span class="date">Jun 5</span><a href="https://desdurmir.wordpress.com/2011/06/05/el-rey-lagarto/" target="_blank" rel="noopener">El Rey Lagarto</a></li>
-      <li class="post"><span class="date">Jun 4</span><a href="https://desdurmir.wordpress.com/2011/06/04/curtas-props-lovecraftianos/" target="_blank" rel="noopener">Curtas – Props Lovecraftianos</a></li>
-      <li class="post"><span class="date">Jun 1</span><a href="https://desdurmir.wordpress.com/2011/06/01/mitologia-2/" target="_blank" rel="noopener">Mitologia 2</a></li>
-      <li class="post"><span class="date">May 31</span><a href="https://desdurmir.wordpress.com/2011/05/31/sera-2/" target="_blank" rel="noopener">Será? – 2</a></li>
-      <li class="post"><span class="date">May 31</span><a href="https://desdurmir.wordpress.com/2011/05/31/poe-gigantes-props/" target="_blank" rel="noopener">Poe – Gigantes Props</a></li>
-      <li class="post"><span class="date">May 30</span><a href="https://desdurmir.wordpress.com/2011/05/30/diamante/" target="_blank" rel="noopener">diamante</a></li>
-      <li class="post"><span class="date">May 30</span><a href="https://desdurmir.wordpress.com/2011/05/30/realidade/" target="_blank" rel="noopener">Será? – 1</a></li>
-      <li class="post"><span class="date">May 30</span><a href="https://desdurmir.wordpress.com/2011/05/30/oulipo-2-livre-nova-mitologia/" target="_blank" rel="noopener">Oulipo 2 livre – Nova Mitologia</a></li>
-      <li class="post"><span class="date">May 27</span><a href="https://desdurmir.wordpress.com/2011/05/27/doutor/" target="_blank" rel="noopener">Doutor</a></li>
-      <li class="post"><span class="date">May 26</span><a href="https://desdurmir.wordpress.com/2011/05/26/props-lovecraftianos/" target="_blank" rel="noopener">Props Lovecraftianos</a></li>
-      <li class="post"><span class="date">May 26</span><a href="https://desdurmir.wordpress.com/2011/05/26/consideracoes-sobre-o-altissimo/" target="_blank" rel="noopener">considerações sobre o Altíssimo</a></li>
-      <li class="post"><span class="date">May 24</span><a href="https://desdurmir.wordpress.com/2011/05/24/seguido/" target="_blank" rel="noopener">Seguido</a></li>
-      <li class="post"><span class="date">May 24</span><a href="https://desdurmir.wordpress.com/2011/05/24/contraste/" target="_blank" rel="noopener">Contraste</a></li>
-      <li class="post"><span class="date">May 23</span><a href="https://desdurmir.wordpress.com/2011/05/23/mulheres/" target="_blank" rel="noopener">Mulheres</a></li>
-      <li class="post"><span class="date">May 23</span><a href="https://desdurmir.wordpress.com/2011/05/23/amantes-tornam-se-em-opositor/" target="_blank" rel="noopener">Amantes tornam-se em opositor 1ª pessoa</a></li>
-      <li class="post"><span class="date">May 22</span><a href="https://desdurmir.wordpress.com/2011/05/22/reflexoes-sobre-deus/" target="_blank" rel="noopener">Reflexões sobre deus.</a></li>
-      <li class="post"><span class="date">May 22</span><a href="https://desdurmir.wordpress.com/2011/05/22/esquisito/" target="_blank" rel="noopener">Esquisito</a></li>
-      <li class="post"><span class="date">May 22</span><a href="https://desdurmir.wordpress.com/2011/05/22/iman-de-psicos/" target="_blank" rel="noopener">Íman de &#x27;Psico&#x27;s</a></li>
-      <li class="post"><span class="date">May 19</span><a href="https://desdurmir.wordpress.com/2011/05/19/o-coveiro/" target="_blank" rel="noopener">O coveiro</a></li>
-      <li class="post"><span class="date">May 19</span><a href="https://desdurmir.wordpress.com/2011/05/19/falencia-da-civilizacao/" target="_blank" rel="noopener">Ela</a></li>
-      <li class="post"><span class="date">May 18</span><a href="https://desdurmir.wordpress.com/2011/05/18/a-queda-e-ascencao-de-ser/" target="_blank" rel="noopener">Queda e ascenção de &quot;ser&quot;</a></li>
-      <li class="post"><span class="date">May 17</span><a href="https://desdurmir.wordpress.com/2011/05/17/a-mais-triste-historia-do-mundo/" target="_blank" rel="noopener">A mais triste história do mundo</a></li>
-      <li class="post"><span class="date">May 17</span><a href="https://desdurmir.wordpress.com/2011/05/17/exercicio-pessoal-em-oulipo/" target="_blank" rel="noopener">Exercício pessoal em OuLiPo</a></li>
-      <li class="post"><span class="date">May 16</span><a href="https://desdurmir.wordpress.com/2011/05/16/curta/" target="_blank" rel="noopener">Curta</a></li>
-      <li class="post"><span class="date">May 15</span><a href="https://desdurmir.wordpress.com/2011/05/15/tobias-o-frango/" target="_blank" rel="noopener">Tobias, o Frango</a></li>
-      <li class="post"><span class="date">May 14</span><a href="https://desdurmir.wordpress.com/2011/05/14/revolucao/" target="_blank" rel="noopener">Revolução</a></li>
-      <li class="post"><span class="date">May 13</span><a href="https://desdurmir.wordpress.com/2011/05/13/autismo/" target="_blank" rel="noopener">Autismo</a></li>
-      <li class="post"><span class="date">May 12</span><a href="https://desdurmir.wordpress.com/2011/05/12/a-maquina-partida/" target="_blank" rel="noopener">A Máquina Partida</a></li>
-      <li class="post"><span class="date">May 12</span><a href="https://desdurmir.wordpress.com/2011/05/12/gangster-heist/" target="_blank" rel="noopener">Gangster Heist</a></li>
-      <li class="post"><span class="date">May 12</span><a href="https://desdurmir.wordpress.com/2011/05/12/exercicios/" target="_blank" rel="noopener">Exercícios</a></li>
-      <li class="post"><span class="date">May 10</span><a href="https://desdurmir.wordpress.com/2011/05/10/lsd-e-sumo-de-laranja/" target="_blank" rel="noopener">LSD e sumo de laranja</a></li>
-      <li class="post"><span class="date">May 8</span><a href="https://desdurmir.wordpress.com/2011/05/08/a-viagem-depois-da-viagem-3%c2%aa-perspectiva-limitada/" target="_blank" rel="noopener">A viagem depois da viagem – 3ª perspectiva limitada</a></li>
-      <li class="post"><span class="date">May 6</span><a href="https://desdurmir.wordpress.com/2011/05/06/porque/" target="_blank" rel="noopener">Porquê?</a></li>
-      <li class="post"><span class="date">May 3</span><a href="https://desdurmir.wordpress.com/2011/05/03/o-mata-pombos/" target="_blank" rel="noopener">O Mata-Pombos</a></li>
-      <li class="post"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/dialogos-internos/" target="_blank" rel="noopener">Diálogos internos</a></li>
-      <li class="post"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/rap-ao-contrario/" target="_blank" rel="noopener">Rap ao contrário</a></li>
-      <li class="post"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/que-se-fodam-os-titulos/" target="_blank" rel="noopener">Que se fodam os títulos</a></li>
-      <li class="post"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/o-estranho-e-o-passageiro/" target="_blank" rel="noopener">O Estranho e o Passageiro</a></li>
-      <li class="post"><span class="date">Apr 30</span><a href="https://desdurmir.wordpress.com/2011/04/30/parlamento-portugues-proximo-prometo/" target="_blank" rel="noopener">Parlamento Portugues Proximo Prometo</a></li>
-      <li class="post"><span class="date">Apr 29</span><a href="https://desdurmir.wordpress.com/2011/04/29/a-viagem-depois-da-viagem/" target="_blank" rel="noopener">A viagem depois da viagem</a></li>
-      <li class="post"><span class="date">Apr 27</span><a href="https://desdurmir.wordpress.com/2011/04/27/quatro-vezes-miseria/" target="_blank" rel="noopener">Quatro vezes miséria</a></li>
-      <li class="post"><span class="date">Apr 15</span><a href="https://desdurmir.wordpress.com/2011/04/15/teoria-de-diversificacao-do-portfolio-da-mente/" target="_blank" rel="noopener">Teoria de Diversificação do Portfólio da Mente</a></li>
-      <li class="post"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/a-porta/" target="_blank" rel="noopener">A porta</a></li>
-      <li class="post"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/ilusao-da-dignidade/" target="_blank" rel="noopener">Ilusão da Dignidade</a></li>
-      <li class="post"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/poema-plagiado/" target="_blank" rel="noopener">Poema Plagiado</a></li>
-      <li class="post"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/manuel-de-favaios-e-outros-rascunhos/" target="_blank" rel="noopener">Manuel de Favaios e outros Rascunhos</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Nov 18</span><a href="https://desdurmir.wordpress.com/2011/11/18/abomino-te/" target="_blank" rel="noopener">Abomino-te</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Nov 14</span><a href="https://desdurmir.wordpress.com/2011/11/14/pano-fim-da-peca/" target="_blank" rel="noopener">mif</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 15</span><a href="https://desdurmir.wordpress.com/2011/06/15/perspectivas/" target="_blank" rel="noopener">Perspectivas</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 13</span><a href="https://desdurmir.wordpress.com/2011/06/13/o-carrasco-indiano/" target="_blank" rel="noopener">O Carrasco Indiano</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 9</span><a href="https://desdurmir.wordpress.com/2011/06/09/fumo-divino/" target="_blank" rel="noopener">Fumo Divino</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 8</span><a href="https://desdurmir.wordpress.com/2011/06/08/amor-e-baloes/" target="_blank" rel="noopener">Amor e Balões</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 7</span><a href="https://desdurmir.wordpress.com/2011/06/07/mais-um-conto-fantastico/" target="_blank" rel="noopener">Mais um conto fantástico</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 7</span><a href="https://desdurmir.wordpress.com/2011/06/07/gutenberg-e-marx-uma-alegoria/" target="_blank" rel="noopener">Gutenberg e Marx – Uma alegoria</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 5</span><a href="https://desdurmir.wordpress.com/2011/06/05/el-rey-lagarto/" target="_blank" rel="noopener">El Rey Lagarto</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 4</span><a href="https://desdurmir.wordpress.com/2011/06/04/curtas-props-lovecraftianos/" target="_blank" rel="noopener">Curtas – Props Lovecraftianos</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Jun 1</span><a href="https://desdurmir.wordpress.com/2011/06/01/mitologia-2/" target="_blank" rel="noopener">Mitologia 2</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 31</span><a href="https://desdurmir.wordpress.com/2011/05/31/sera-2/" target="_blank" rel="noopener">Será? – 2</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 31</span><a href="https://desdurmir.wordpress.com/2011/05/31/poe-gigantes-props/" target="_blank" rel="noopener">Poe – Gigantes Props</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 30</span><a href="https://desdurmir.wordpress.com/2011/05/30/diamante/" target="_blank" rel="noopener">diamante</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 30</span><a href="https://desdurmir.wordpress.com/2011/05/30/realidade/" target="_blank" rel="noopener">Será? – 1</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 30</span><a href="https://desdurmir.wordpress.com/2011/05/30/oulipo-2-livre-nova-mitologia/" target="_blank" rel="noopener">Oulipo 2 livre – Nova Mitologia</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 27</span><a href="https://desdurmir.wordpress.com/2011/05/27/doutor/" target="_blank" rel="noopener">Doutor</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 26</span><a href="https://desdurmir.wordpress.com/2011/05/26/props-lovecraftianos/" target="_blank" rel="noopener">Props Lovecraftianos</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 26</span><a href="https://desdurmir.wordpress.com/2011/05/26/consideracoes-sobre-o-altissimo/" target="_blank" rel="noopener">considerações sobre o Altíssimo</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 24</span><a href="https://desdurmir.wordpress.com/2011/05/24/seguido/" target="_blank" rel="noopener">Seguido</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 24</span><a href="https://desdurmir.wordpress.com/2011/05/24/contraste/" target="_blank" rel="noopener">Contraste</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 23</span><a href="https://desdurmir.wordpress.com/2011/05/23/mulheres/" target="_blank" rel="noopener">Mulheres</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 23</span><a href="https://desdurmir.wordpress.com/2011/05/23/amantes-tornam-se-em-opositor/" target="_blank" rel="noopener">Amantes tornam-se em opositor 1ª pessoa</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 22</span><a href="https://desdurmir.wordpress.com/2011/05/22/reflexoes-sobre-deus/" target="_blank" rel="noopener">Reflexões sobre deus.</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 22</span><a href="https://desdurmir.wordpress.com/2011/05/22/esquisito/" target="_blank" rel="noopener">Esquisito</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 22</span><a href="https://desdurmir.wordpress.com/2011/05/22/iman-de-psicos/" target="_blank" rel="noopener">Íman de &#x27;Psico&#x27;s</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 19</span><a href="https://desdurmir.wordpress.com/2011/05/19/o-coveiro/" target="_blank" rel="noopener">O coveiro</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 19</span><a href="https://desdurmir.wordpress.com/2011/05/19/falencia-da-civilizacao/" target="_blank" rel="noopener">Ela</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 18</span><a href="https://desdurmir.wordpress.com/2011/05/18/a-queda-e-ascencao-de-ser/" target="_blank" rel="noopener">Queda e ascenção de &quot;ser&quot;</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 17</span><a href="https://desdurmir.wordpress.com/2011/05/17/a-mais-triste-historia-do-mundo/" target="_blank" rel="noopener">A mais triste história do mundo</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 17</span><a href="https://desdurmir.wordpress.com/2011/05/17/exercicio-pessoal-em-oulipo/" target="_blank" rel="noopener">Exercício pessoal em OuLiPo</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 16</span><a href="https://desdurmir.wordpress.com/2011/05/16/curta/" target="_blank" rel="noopener">Curta</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 15</span><a href="https://desdurmir.wordpress.com/2011/05/15/tobias-o-frango/" target="_blank" rel="noopener">Tobias, o Frango</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 14</span><a href="https://desdurmir.wordpress.com/2011/05/14/revolucao/" target="_blank" rel="noopener">Revolução</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 13</span><a href="https://desdurmir.wordpress.com/2011/05/13/autismo/" target="_blank" rel="noopener">Autismo</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 12</span><a href="https://desdurmir.wordpress.com/2011/05/12/a-maquina-partida/" target="_blank" rel="noopener">A Máquina Partida</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 12</span><a href="https://desdurmir.wordpress.com/2011/05/12/gangster-heist/" target="_blank" rel="noopener">Gangster Heist</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 12</span><a href="https://desdurmir.wordpress.com/2011/05/12/exercicios/" target="_blank" rel="noopener">Exercícios</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 10</span><a href="https://desdurmir.wordpress.com/2011/05/10/lsd-e-sumo-de-laranja/" target="_blank" rel="noopener">LSD e sumo de laranja</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 8</span><a href="https://desdurmir.wordpress.com/2011/05/08/a-viagem-depois-da-viagem-3%c2%aa-perspectiva-limitada/" target="_blank" rel="noopener">A viagem depois da viagem – 3ª perspectiva limitada</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 6</span><a href="https://desdurmir.wordpress.com/2011/05/06/porque/" target="_blank" rel="noopener">Porquê?</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 3</span><a href="https://desdurmir.wordpress.com/2011/05/03/o-mata-pombos/" target="_blank" rel="noopener">O Mata-Pombos</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/dialogos-internos/" target="_blank" rel="noopener">Diálogos internos</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/rap-ao-contrario/" target="_blank" rel="noopener">Rap ao contrário</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/que-se-fodam-os-titulos/" target="_blank" rel="noopener">Que se fodam os títulos</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">May 2</span><a href="https://desdurmir.wordpress.com/2011/05/02/o-estranho-e-o-passageiro/" target="_blank" rel="noopener">O Estranho e o Passageiro</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 30</span><a href="https://desdurmir.wordpress.com/2011/04/30/parlamento-portugues-proximo-prometo/" target="_blank" rel="noopener">Parlamento Portugues Proximo Prometo</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 29</span><a href="https://desdurmir.wordpress.com/2011/04/29/a-viagem-depois-da-viagem/" target="_blank" rel="noopener">A viagem depois da viagem</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 27</span><a href="https://desdurmir.wordpress.com/2011/04/27/quatro-vezes-miseria/" target="_blank" rel="noopener">Quatro vezes miséria</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 15</span><a href="https://desdurmir.wordpress.com/2011/04/15/teoria-de-diversificacao-do-portfolio-da-mente/" target="_blank" rel="noopener">Teoria de Diversificação do Portfólio da Mente</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/a-porta/" target="_blank" rel="noopener">A porta</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/ilusao-da-dignidade/" target="_blank" rel="noopener">Ilusão da Dignidade</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/poema-plagiado/" target="_blank" rel="noopener">Poema Plagiado</a></li>
+      <li class="post" data-k="essay" data-l="pt"><span class="date">Apr 13</span><a href="https://desdurmir.wordpress.com/2011/04/13/manuel-de-favaios-e-outros-rascunhos/" target="_blank" rel="noopener">Manuel de Favaios e outros Rascunhos</a></li>
     </ul>
-    <p class="count">168 pieces · 2011–2026</p>
+    <p class="count" id="wcount">172 pieces · 2011–2026</p>
     <p class="offer"><a class="em-link" href="#">Consulting — I help smart people articulate their best ideas</a></p>
     <p class="offer"><a href="https://rivalvoices.gumroad.com/" target="_blank" rel="noopener">Books — the collected works</a></p>
   </section>
@@ -532,6 +558,9 @@
           <a class="slide" href="https://x.com/nosilverv/status/2103041651199386051" target="_blank" rel="noopener"><img src="art/2103041651199386051-2.jpg" width="2048" height="1988" alt="" loading="lazy" referrerpolicy="no-referrer"></a>
           <a class="slide" href="https://x.com/nosilverv/status/2103041651199386051" target="_blank" rel="noopener"><img src="art/2103041651199386051-3.jpg" width="2048" height="1686" alt="" loading="lazy" referrerpolicy="no-referrer"></a>
           <a class="slide" href="https://x.com/nosilverv/status/2103041651199386051" target="_blank" rel="noopener"><img src="art/2103041651199386051-4.jpg" width="2048" height="1978" alt="" loading="lazy" referrerpolicy="no-referrer"></a>
+          <button class="sh-nav sh-prev" aria-label="Previous">&larr;</button>
+          <button class="sh-nav sh-next" aria-label="Next">&rarr;</button>
+          <div class="sh-dots"><span></span><span></span><span></span><span></span></div>
         </div>
         <p class="cap">It seems to me that (modulo us surviving AI) the fusion of Effective Altruism and Western Pragmatic Dharma is "priced in" given that they share so many adherent. So I went ahead and sketched what that could look like.</p>
         <p class="meta">Sep 24, 2026 &middot; <a href="https://x.com/nosilverv/status/2103041651199386051" target="_blank" rel="noopener">view on X &rarr;</a></p>
@@ -668,6 +697,9 @@
           <a class="slide" href="https://x.com/nosilverv/status/2102245898235347046" target="_blank" rel="noopener"><img src="art/2102245898235347046-2.jpg" width="2048" height="1540" alt="" loading="lazy" referrerpolicy="no-referrer"></a>
           <a class="slide" href="https://x.com/nosilverv/status/2102245898235347046" target="_blank" rel="noopener"><img src="art/2102245898235347046-3.jpg" width="1901" height="2048" alt="" loading="lazy" referrerpolicy="no-referrer"></a>
           <a class="slide" href="https://x.com/nosilverv/status/2102245898235347046" target="_blank" rel="noopener"><img src="art/2102245898235347046-4.jpg" width="1779" height="2047" alt="" loading="lazy" referrerpolicy="no-referrer"></a>
+          <button class="sh-nav sh-prev" aria-label="Previous">&larr;</button>
+          <button class="sh-nav sh-next" aria-label="Next">&rarr;</button>
+          <div class="sh-dots"><span></span><span></span><span></span><span></span></div>
         </div>
         <p class="cap">Obsessed with the idea of doing a "Dark Jhana" retreat — a retreat you go to *purposefully* feel worse/hellish states</p>
         <p class="meta">Sep 22, 2026 &middot; <a href="https://x.com/nosilverv/status/2102245898235347046" target="_blank" rel="noopener">view on X &rarr;</a></p>
@@ -1349,5 +1381,41 @@ Lots of alpha in deliberately bracing against WARM showers as well, this really 
     const entry = Object.entries(tabIds).find(([, v]) => v === h);
     if (entry) { const r = document.getElementById(entry[0]); if (r) r.checked = true; }
 </script>
+  <script>
+    // Writing filters: All / Essays / Books / English / Portuguese
+    (function(){
+      const nw = document.querySelector('.nw');
+      const btns = [...nw.querySelectorAll('.sub button')];
+      const list = document.querySelector('#writing ul');
+      const count = document.getElementById('wcount');
+      const baseCount = count.textContent;
+      const names = { essay: 'essays', book: 'books', en: 'in English', pt: 'in Portuguese' };
+      function apply(f) {
+        let n = 0, yearEl = null, yearHas = false;
+        const close = () => { if (yearEl) yearEl.classList.toggle('hide', !yearHas); };
+        [...list.children].forEach(li => {
+          if (li.classList.contains('year')) { close(); yearEl = li; yearHas = false; return; }
+          const ok = f === 'all' || li.dataset.k === f || li.dataset.l === f;
+          li.classList.toggle('hide', !ok);
+          if (ok) { n++; yearHas = true; }
+        });
+        close();
+        count.textContent = f === 'all' ? baseCount : n + ' ' + (f === 'en' || f === 'pt' ? 'pieces ' : '') + names[f];
+        btns.forEach(b => b.classList.toggle('on', b.dataset.f === f));
+      }
+      btns.forEach(b => b.addEventListener('click', () => {
+        document.getElementById('r-writing').checked = true;
+        history.replaceState(null, '', '#writing');
+        apply(b.dataset.f);
+        nw.classList.remove('open');
+        b.blur();
+      }));
+      // touch screens: tap "Writing" to open the menu
+      if (matchMedia('(hover: none)').matches) {
+        nw.querySelector('label').addEventListener('click', () => nw.classList.toggle('open'));
+        document.addEventListener('click', e => { if (!nw.contains(e.target)) nw.classList.remove('open'); });
+      }
+    })();
+  </script>
 </body>
 </html>
