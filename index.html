@@ -319,7 +319,7 @@
     <nav>
       <span class="nw"><label for="r-writing">Writing</label><span class="sub" role="menu"><button data-f="all" class="on">All</button><button data-f="essay">Essays</button><button data-f="book">Books</button><button data-f="en">English</button><button data-f="pt">Portuguese</button></span></span>
       <span class="sep">|</span>
-      <label for="r-art">Art</label>
+      <span class="nw na"><label for="r-art">Art</label><span class="sub" role="menu"><button data-f="all" class="on">All</button><button data-f="img">Images</button><button data-f="vid">Videos</button></span></span>
       <span class="sep">|</span>
       <label for="r-podcasts">Podcasts</label>
     </nav>
@@ -1221,7 +1221,7 @@ Lots of alpha in deliberately bracing against WARM showers as well, this really 
         <p class="meta">Sep 9, 2025 &middot; <a href="https://x.com/nosilverv/status/1965438810390724721" target="_blank" rel="noopener">view on X &rarr;</a></p>
       </article>
     </div>
-    <p class="count">94 pieces · 2025–2026</p>
+    <p class="count" id="acount">94 pieces · 2025–2026</p>
     <p class="offer"><a class="em-link" href="#">Commissions — you explain the idea, I find the shape</a></p>
   </section>
 
@@ -1384,7 +1384,7 @@ Lots of alpha in deliberately bracing against WARM showers as well, this really 
   <script>
     // Writing filters: All / Essays / Books / English / Portuguese
     (function(){
-      const nw = document.querySelector('.nw');
+      const nw = document.querySelector('.nw:not(.na)');
       const btns = [...nw.querySelectorAll('.sub button')];
       const list = document.querySelector('#writing ul');
       const count = document.getElementById('wcount');
@@ -1411,6 +1411,34 @@ Lots of alpha in deliberately bracing against WARM showers as well, this really 
         b.blur();
       }));
       // touch screens: tap "Writing" to open the menu
+      if (matchMedia('(hover: none)').matches) {
+        nw.querySelector('label').addEventListener('click', () => nw.classList.toggle('open'));
+        document.addEventListener('click', e => { if (!nw.contains(e.target)) nw.classList.remove('open'); });
+      }
+    })();
+  </script>
+  <script>
+    // Art filters: All / Images / Videos
+    (function(){
+      const nw = document.querySelector('.nw.na');
+      const btns = [...nw.querySelectorAll('.sub button')];
+      const cards = [...document.querySelectorAll('#art .post-card')];
+      const count = document.getElementById('acount');
+      const baseCount = count.textContent;
+      cards.forEach(c => { c.dataset.k = c.querySelector('video') ? 'vid' : 'img'; });
+      function apply(f) {
+        let n = 0;
+        cards.forEach(c => { const ok = f === 'all' || c.dataset.k === f; c.style.display = ok ? '' : 'none'; if (ok) n++; });
+        count.textContent = f === 'all' ? baseCount : n + (f === 'vid' ? ' videos' : ' images');
+        btns.forEach(b => b.classList.toggle('on', b.dataset.f === f));
+      }
+      btns.forEach(b => b.addEventListener('click', () => {
+        document.getElementById('r-art').checked = true;
+        history.replaceState(null, '', '#art');
+        apply(b.dataset.f);
+        nw.classList.remove('open');
+        b.blur();
+      }));
       if (matchMedia('(hover: none)').matches) {
         nw.querySelector('label').addEventListener('click', () => nw.classList.toggle('open'));
         document.addEventListener('click', e => { if (!nw.contains(e.target)) nw.classList.remove('open'); });
